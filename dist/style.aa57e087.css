@@ -37,7 +37,7 @@ body {
     }
 
     .searchForm {
-        max-width: 400px;
+        max-width: 500px;
         margin-left: auto;
         margin-right: auto;
         
@@ -150,13 +150,6 @@ body {
     display: flex;
     padding: 3px;
 }
-.siteList .site > .delete .icon {
-    /* border: 1px solid red; */
-    
-    /* padding-top: 2px;
-    padding-right: 5px;   */
-
-}
 @media (min-width: 500px) {
     .siteList  .site > .delete {
         display: none;
@@ -189,4 +182,4 @@ body {
 /* 上面的addButton按钮,应该和site共用class,有待优化 */
 
 
-/*# sourceMappingURL=style.94af1d0f.css.map */
+/*# sourceMappingURL=style.aa57e087.css.map */
