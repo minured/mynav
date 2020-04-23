@@ -8,19 +8,24 @@ let hashMap = siteObj || [
     {logo: 'B', logoType: 'image', url: 'https://www.bilibili.com'}
 ]
 console.log(hashMap)
-
 // 有了哈希表之后 ,就没有必要直接把内容写在html上, 可以用哈希表生成html
 
+let inputFocus = false
+
 let simplifyUrl = (url) => {
-    return url.replace("https://", "")
+    let simple_url = url.replace("https://", "")
         .replace("http://")
         .replace("www.", "")
-        .replace(/\/.*/, "/*")
+        .replace(/\/.+/, "/...")
+    if (simple_url[simple_url.length - 1] === "/") {
+        simple_url = simple_url.replace("/", "")
+    }
+    return simple_url
 }
 let saveHash = (hashMap) => {
     let siteStr = JSON.stringify(hashMap)
     localStorage.setItem("site", siteStr)
-    console.log("url已保存到localStorage")
+    console.log("hashMap已保存到localStorage")
 }
 
 let render = () => {
@@ -59,7 +64,6 @@ render()
 
 $(".addButton")
     .on("click", () => {
-        console.log(1)
         let url = window.prompt("输入你要添加的网址:")
         if (url.indexOf("http") !== 0) {
             url = "https://" + url
@@ -76,6 +80,7 @@ $(".addButton")
         saveHash(hashMap)
     })
 
+
 //用户关闭页面之前保存localStorage    
  window.onbeforeunload = () => {
     saveHash(hashMap)
@@ -85,14 +90,26 @@ $(".addButton")
 //监听用户的键盘事件
 $(document).on("keypress", (e) => {
     //e.key就是按下的按键 小写a b c ...
-
     //当变量名与对象的属性名相同的时候，let key = e.key可以简写如下，
-    let {key} = e
-    console.log(key)
-    hashMap.forEach(site => {
-        if(site.logo.toLocaleLowerCase() === key) {
-            window.open(site.url, "_self")
-        }
-    })
+    if (inputFocus === false) {
+        console.log("input为false")
+        let {key} = e
+        console.log(key)
+        hashMap.forEach(site => {
+            if(site.logo.toLocaleLowerCase() === key) {
+                window.open(site.url, "_self")
+            }
+        })
+    }
+})
 
+
+
+//判断input获取焦点
+$("input[name=wd]").focus(() => {
+    console.log("获取焦点")
+    inputFocus = true
+}).blur(() => {
+    console.log("失去焦点")
+    inputFocus = false
 })

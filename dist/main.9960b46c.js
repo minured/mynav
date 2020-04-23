@@ -134,14 +134,22 @@ var hashMap = siteObj || [{
 }];
 console.log(hashMap); // 有了哈希表之后 ,就没有必要直接把内容写在html上, 可以用哈希表生成html
 
+var inputFocus = false;
+
 var simplifyUrl = function simplifyUrl(url) {
-  return url.replace("https://", "").replace("http://").replace("www.", "").replace(/\/.*/, "/*");
+  var simple_url = url.replace("https://", "").replace("http://").replace("www.", "").replace(/\/.+/, "/...");
+
+  if (simple_url[simple_url.length - 1] === "/") {
+    simple_url = simple_url.replace("/", "");
+  }
+
+  return simple_url;
 };
 
 var saveHash = function saveHash(hashMap) {
   var siteStr = JSON.stringify(hashMap);
   localStorage.setItem("site", siteStr);
-  console.log("url已保存到localStorage");
+  console.log("hashMap已保存到localStorage");
 };
 
 var render = function render() {
@@ -166,7 +174,6 @@ var render = function render() {
 
 render();
 $(".addButton").on("click", function () {
-  console.log(1);
   var url = window.prompt("输入你要添加的网址:");
 
   if (url.indexOf("http") !== 0) {
@@ -192,13 +199,24 @@ window.onbeforeunload = function () {
 $(document).on("keypress", function (e) {
   //e.key就是按下的按键 小写a b c ...
   //当变量名与对象的属性名相同的时候，let key = e.key可以简写如下，
-  var key = e.key;
-  console.log(key);
-  hashMap.forEach(function (site) {
-    if (site.logo.toLocaleLowerCase() === key) {
-      window.open(site.url, "_self");
-    }
-  });
+  if (inputFocus === false) {
+    console.log("input为false");
+    var key = e.key;
+    console.log(key);
+    hashMap.forEach(function (site) {
+      if (site.logo.toLocaleLowerCase() === key) {
+        window.open(site.url, "_self");
+      }
+    });
+  }
+}); //判断input获取焦点
+
+$("input[name=wd]").focus(function () {
+  console.log("获取焦点");
+  inputFocus = true;
+}).blur(function () {
+  console.log("失去焦点");
+  inputFocus = false;
 });
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.867e6ac6.js.map
+//# sourceMappingURL=main.9960b46c.js.map
