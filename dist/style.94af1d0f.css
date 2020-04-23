@@ -1,0 +1,192 @@
+/* CSS reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+*:after, *:after {
+    box-sizing: border-box; 
+}
+a {
+    color: inherit; 
+    text-decoration: none;
+    
+}
+ul, ol {
+    list-style: none;
+}
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+
+/* style */
+body {
+    background: #eee;
+}
+.globalHeader {
+    /* border: 1px solid black; */
+    margin: 20px;
+    
+}
+@media (min-width:500px) {
+    .globalHeader {
+        margin: 80px 0;
+    }
+
+    .searchForm {
+        max-width: 400px;
+        margin-left: auto;
+        margin-right: auto;
+        
+    }
+    
+}
+
+.globalHeader > .searchForm {
+    display: flex;
+    justify-content: space-between;
+}
+.globalHeader > .searchForm > input {
+    margin-right: 10px;
+    width: 100%;
+    line-height: 40px;
+    font-size: 16px;
+    padding: 0px 10px;
+    border-radius: 4px;
+    border: 1px solid #DDD;
+
+}
+.globalHeader > .searchForm > button {
+    white-space: nowrap;
+    padding: 0px 25px;
+    border-radius: 4px;
+    border: none;
+    color: white;
+    background: #0282b9;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+
+.globalMain {
+    /* border:1px solid green; */
+    margin: 20px;
+}
+
+.siteList {
+    /* border: 1px solid green; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+@media (min-width: 500px) {
+    .globalMain {
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .siteList { 
+        justify-content: flex-start;
+        margin-right: -25px;
+       
+        
+    }
+    .site {
+        margin-right: 25px;
+        width: 160px;
+    }
+    .addButton {
+        width: 160px;
+    }
+
+}
+@media (max-width: 500px) {
+    .site {
+        width: 150px;
+    }
+    .addButton {
+        width: 150px;
+    }
+}
+
+.siteList .site {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: white;
+    border-radius: 4px;
+    padding: 20px 0;
+    position: relative;
+    margin-bottom: 25px;
+    cursor: pointer;
+    border: 1px solid #ddd
+    
+}
+.siteList .site > .logo {
+    /* border: 1px solid black; */
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 64px;
+}
+.siteList .site > .link {
+    /* border:1px solid black; */
+    font-size: 14px;
+    padding-top: 4px;
+}
+.siteList .site > .delete {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    cursor: default;
+    /* border:1px solid black; */
+    display: flex;
+    padding: 3px;
+}
+.siteList .site > .delete .icon {
+    /* border: 1px solid red; */
+    
+    /* padding-top: 2px;
+    padding-right: 5px;   */
+
+}
+@media (min-width: 500px) {
+    .siteList  .site > .delete {
+        display: none;
+    }
+    .siteList .site:hover > .delete {
+        display: flex;
+    }
+}
+
+.siteList .addButton {
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.siteList .addButton .icon {
+    /* border: 1px solid black; */
+    width: 64px;
+    height: 64px;
+}
+.siteList .addButton .iconWrapper {
+    /* border: 1px solid black; */
+    width: 64px;
+    height: 64px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 上面的addButton按钮,应该和site共用class,有待优化 */
+
+
+/*# sourceMappingURL=/style.94af1d0f.css.map */
