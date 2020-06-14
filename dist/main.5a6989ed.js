@@ -124,13 +124,13 @@ var siteStr = localStorage.getItem("site");
 var siteObj = JSON.parse(siteStr); //要多学习||后面是保底值
 
 var hashMap = siteObj || [{
-  logo: 'A',
-  logType: 'text',
-  url: 'https://www.acfun.cn'
+  logo: "A",
+  logType: "text",
+  url: "https://www.acfun.cn"
 }, {
-  logo: 'B',
-  logoType: 'image',
-  url: 'https://www.bilibili.com'
+  logo: "B",
+  logoType: "image",
+  url: "https://www.bilibili.com"
 }];
 console.log(hashMap); // 有了哈希表之后 ,就没有必要直接把内容写在html上, 可以用哈希表生成html
 
@@ -181,15 +181,15 @@ $(".addButton").on("click", function () {
   }
 
   hashMap.push({
-    'logo': simplifyUrl(url)[0],
-    'logoType': 'text',
-    'url': url
-  }); // console.log(hashMap)  
+    logo: simplifyUrl(url)[0],
+    logoType: "text",
+    url: url
+  }); // console.log(hashMap)
 
   render(); //每次添加url，哈希表保存到localStorage
 
   saveHash(hashMap);
-}); //用户关闭页面之前保存localStorage    
+}); //用户关闭页面之前保存localStorage
 
 window.onbeforeunload = function () {
   saveHash(hashMap);
@@ -212,11 +212,9 @@ $(document).on("keypress", function (e) {
 }); //判断input获取焦点
 
 $("input[name=wd]").focus(function () {
-  console.log("获取焦点");
   inputFocus = true;
 }).blur(function () {
-  console.log("失去焦点");
   inputFocus = false;
 });
 },{}]},{},["epB2"], null)
-//# sourceMappingURL=main.9960b46c.js.map
+//# sourceMappingURL=main.5a6989ed.js.map
